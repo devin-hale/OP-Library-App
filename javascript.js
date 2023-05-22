@@ -3,14 +3,14 @@ let libary = [];
 const bookGrid = document.getElementById('bookGrid');
 
 /* Function that appends a new book Div.  Will add connectivity to library objects later.*/
-function newBook() {
+function newBook(Book) {
     /* Create Initial Div with book class*/
     let book = document.createElement('div');
     book.classList.add("book")
 
-    /*Title element with author class*/
+    /*Title element with title class*/
     let newTitle = document.createElement('p');
-    newTitle.innerHTML = 'Harry Potter';
+    newTitle.innerHTML = `${Book.title}`;
     newTitle.classList.add("title");
     book.appendChild(newTitle);
 
@@ -33,7 +33,7 @@ function newBook() {
     
         let newAuthorData = document.createElement('p');
         /*Houses Library Data*/
-        newAuthorData.innerHTML = 'X';
+        newAuthorData.innerHTML = `${Book.author}`;
         newAuthorData.classList.add("authorData")
         newAuthorInfo.appendChild(newAuthorData);
 
@@ -51,7 +51,7 @@ function newBook() {
 
         let newPagesData = document.createElement('p');
         /*Houses Library Data*/
-        newPagesData.innerHTML = 'X';
+        newPagesData.innerHTML = `${Book.pages}`;
         newPagesData.classList.add("pagesData")
         newPagesInfo.appendChild(newPagesData);
 
@@ -70,7 +70,7 @@ function newBook() {
 
         let newReadData = document.createElement('p');
         /*Houses Library Data*/
-        newReadData.innerHTML = 'X';
+        newReadData.innerHTML = `${Book.read}`;
         newReadData.classList.add("readData")
         newReadInfo.appendChild(newReadData);
 
@@ -78,18 +78,12 @@ function newBook() {
     bookGrid.appendChild(book);
 }
 
-newBook();
-newBook();
-newBook();
-newBook();
-newBook();
-newBook();
-newBook();
-newBook();
-newBook();
-newBook();
-newBook();
-newBook();
-newBook();
-newBook();
-newBook();
+/* Book constructor function */
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+}
+
+
