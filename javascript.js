@@ -1,16 +1,16 @@
-let libary = [];
+let library = [];
 
 const bookGrid = document.getElementById('bookGrid');
 
 /* Function that appends a new book Div.  Will add connectivity to library objects later.*/
-function newBook(Book) {
+function newBook(newBookGenerate) {
     /* Create Initial Div with book class*/
     let book = document.createElement('div');
     book.classList.add("book")
 
     /*Title element with title class*/
     let newTitle = document.createElement('p');
-    newTitle.innerHTML = `${Book.title}`;
+    newTitle.innerHTML = `${newBookGenerate.title}`;
     newTitle.classList.add("title");
     book.appendChild(newTitle);
 
@@ -29,11 +29,12 @@ function newBook(Book) {
         let newAuthor = document.createElement('p');
         newAuthor.innerHTML = 'Author:';
         newAuthor.classList.add("author")
+        newAuthor.style.fontWeight = 'bold';
         newAuthorInfo.appendChild(newAuthor);
     
         let newAuthorData = document.createElement('p');
         /*Houses Library Data*/
-        newAuthorData.innerHTML = `${Book.author}`;
+        newAuthorData.innerHTML = `${newBookGenerate.author}`;
         newAuthorData.classList.add("authorData")
         newAuthorInfo.appendChild(newAuthorData);
 
@@ -47,11 +48,12 @@ function newBook(Book) {
         let newPages = document.createElement('p');
         newPages.innerHTML = 'Page Count:';
         newPages.classList.add("pages")
+        newPages.style.fontWeight = 'bold';
         newPagesInfo.appendChild(newPages);
 
         let newPagesData = document.createElement('p');
         /*Houses Library Data*/
-        newPagesData.innerHTML = `${Book.pages}`;
+        newPagesData.innerHTML = `${newBookGenerate.pages}`;
         newPagesData.classList.add("pagesData")
         newPagesInfo.appendChild(newPagesData);
 
@@ -66,11 +68,12 @@ function newBook(Book) {
         let newRead = document.createElement('p');
         newRead.innerHTML = 'Read:';
         newRead.classList.add("read")
+        newRead.style.fontWeight = 'bold';
         newReadInfo.appendChild(newRead);
 
         let newReadData = document.createElement('p');
         /*Houses Library Data*/
-        newReadData.innerHTML = `${Book.read}`;
+        newReadData.innerHTML = `${newBookGenerate.read}`;
         newReadData.classList.add("readData")
         newReadInfo.appendChild(newReadData);
 
@@ -86,4 +89,11 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+library.push(new Book('The Lord of the Rings','J.R.R. Tolkien', 1178, 'No'));
+library.push(new Book('The Great Gatbsy', 'F. Scott Fitzgerald', 208, 'Yes'))
+library.push(new Book('A Game of Thrones', 'George R.R. Martin', 694, 'No'))
+console.log(library);
 
+library.forEach(newBookGenerate => {
+    newBook(newBookGenerate);
+});
