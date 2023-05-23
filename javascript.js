@@ -114,7 +114,10 @@ function newBook(newBookGenerate) {
     removeButton.innerHTML = 'X'
     book.appendChild(removeButton);
 
-    removeButton.addEventListener('click', a => a.target.parentNode.remove())
+    removeButton.addEventListener('click', a => {
+        library.splice(Array.from(a.target.parentNode.parentNode.children).indexOf(a.target.parentNode), 1);
+        a.target.parentNode.remove();
+    })
 
 
 
