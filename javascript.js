@@ -92,10 +92,9 @@ function newBook(newBookGenerate) {
         readDataOptionNo.setAttribute("selected", "");
     };
     
-    /*Event Listener on the Read Dropdown.
-    Upon changing the value, compares every book read status against its index in the library array.
-    When it finds one that doesn't match, it changes it to match the div. */
-    newReadData.addEventListener('change', a => {
+    /*I'm leaving this here as a comparison */
+
+    /*newReadData.addEventListener('change', a => {
         let bookList = document.querySelectorAll('.book');
         console.log(bookList);
         for (i = 0; i < (bookList.length) - 1; i++) {
@@ -104,9 +103,10 @@ function newBook(newBookGenerate) {
                 library[i].read = bookListReadValue.value;
             }
         }
-    })
+    })*/
 
-    
+    // I'm so hyped that I was able to make this.  It's a revised one line version of the above eventlistener that doesn't require a loop.
+    newReadData.addEventListener('change', a => {library[Array.from(a.target.parentNode.parentNode.parentNode.children).indexOf(a.target.parentNode.parentNode)].read = a.target.value;})
 
     let removeButton = document.createElement('button');
     removeButton.classList.add('removeButton');
