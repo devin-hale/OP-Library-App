@@ -105,7 +105,7 @@ function newBook(newBookGenerate) {
         }
     })*/
 
-    // I'm so hyped that I was able to make this.  It's a revised one line version of the above eventlistener that doesn't require a loop.
+    // I'm so hyped that I was able to make this.  It's beautiful.  It's a revised one line version of the above eventlistener that doesn't require a loop.
     newReadData.addEventListener('change', a => {library[Array.from(a.target.parentNode.parentNode.parentNode.children).indexOf(a.target.parentNode.parentNode)].read = a.target.value;})
 
     let removeButton = document.createElement('button');
