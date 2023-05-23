@@ -71,11 +71,27 @@ function newBook(newBookGenerate) {
         newRead.style.fontWeight = 'bold';
         newReadInfo.appendChild(newRead);
 
-        let newReadData = document.createElement('p');
-        /*Houses Library Data*/
-        newReadData.innerHTML = `${newBookGenerate.read}`;
+        let newReadData = document.createElement('select');
         newReadData.classList.add("readData")
+        newReadData.id = 'readInput'
         newReadInfo.appendChild(newReadData);
+            
+            let readDataOptionYes = document.createElement('option');
+            readDataOptionYes.innerHTML = 'Yes';
+            readDataOptionYes.value = 'Yes';
+            newReadData.appendChild(readDataOptionYes)
+
+            let readDataOptionNo = document.createElement('option');
+            readDataOptionNo.innerHTML = 'No';
+            readDataOptionNo.value = 'No';
+            newReadData.appendChild(readDataOptionNo)
+    
+    if (newBookGenerate.read == 'Yes') {
+        readDataOptionYes.setAttribute("selected", "");
+    }
+    else {
+        readDataOptionNo.setAttribute("selected", "");
+    }
 
 
     bookGrid.appendChild(book);
