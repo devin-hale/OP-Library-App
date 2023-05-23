@@ -6,7 +6,7 @@ const bookGrid = document.getElementById('bookGrid');
 function newBook(newBookGenerate) {
     /* Create Initial Div with book class*/
     let book = document.createElement('div');
-    book.classList.add("book")
+    book.classList.add("book");
 
     /*Title element with title class*/
     let newTitle = document.createElement('p');
@@ -22,20 +22,20 @@ function newBook(newBookGenerate) {
 
     /*AuthorInfo element with author, and author data elements as children.*/
     let newAuthorInfo = document.createElement('div');
-    newAuthorInfo.classList.add("authorInfo")
-    newAuthorInfo.classList.add("bookData")
+    newAuthorInfo.classList.add("authorInfo");
+    newAuthorInfo.classList.add("bookData");
     book.appendChild(newAuthorInfo);
 
         let newAuthor = document.createElement('p');
         newAuthor.innerHTML = 'Author:';
-        newAuthor.classList.add("author")
+        newAuthor.classList.add("author");
         newAuthor.style.fontWeight = 'bold';
         newAuthorInfo.appendChild(newAuthor);
     
         let newAuthorData = document.createElement('p');
         /*Houses Library Data*/
         newAuthorData.innerHTML = `${newBookGenerate.author}`;
-        newAuthorData.classList.add("authorData")
+        newAuthorData.classList.add("authorData");
         newAuthorInfo.appendChild(newAuthorData);
 
 
@@ -47,14 +47,14 @@ function newBook(newBookGenerate) {
 
         let newPages = document.createElement('p');
         newPages.innerHTML = 'Page Count:';
-        newPages.classList.add("pages")
+        newPages.classList.add("pages");
         newPages.style.fontWeight = 'bold';
         newPagesInfo.appendChild(newPages);
 
         let newPagesData = document.createElement('p');
         /*Houses Library Data*/
         newPagesData.innerHTML = `${newBookGenerate.pages}`;
-        newPagesData.classList.add("pagesData")
+        newPagesData.classList.add("pagesData");
         newPagesInfo.appendChild(newPagesData);
 
 
@@ -67,13 +67,13 @@ function newBook(newBookGenerate) {
 
         let newRead = document.createElement('p');
         newRead.innerHTML = 'Read:';
-        newRead.classList.add("read")
+        newRead.classList.add("read");
         newRead.style.fontWeight = 'bold';
         newReadInfo.appendChild(newRead);
 
         let newReadData = document.createElement('select');
-        newReadData.classList.add("readData")
-        newReadData.id = 'readInput'
+        newReadData.classList.add("readData");
+        newReadData.id = 'readInput';
         newReadInfo.appendChild(newReadData);
             
             let readDataOptionYes = document.createElement('option');
@@ -84,14 +84,38 @@ function newBook(newBookGenerate) {
             let readDataOptionNo = document.createElement('option');
             readDataOptionNo.innerHTML = 'No';
             readDataOptionNo.value = 'No';
-            newReadData.appendChild(readDataOptionNo)
+            newReadData.appendChild(readDataOptionNo);
     
     if (newBookGenerate.read == 'Yes') {
         readDataOptionYes.setAttribute("selected", "");
-    }
-    else {
+    } else {
         readDataOptionNo.setAttribute("selected", "");
-    }
+    };
+    
+    /*Event Listener on the Read Dropdown.
+    Upon changing the value, compares every book read status against its index in the library array.
+    When it finds one that doesn't match, it changes it to match the div. */
+    newReadData.addEventListener('change', a => {
+        let bookList = document.querySelectorAll('.book');
+        console.log(bookList);
+        for (i = 0; i < (bookList.length) - 1; i++) {
+            let bookListReadValue = bookList[i].querySelector('#readInput');
+            if (library[i].read !== bookListReadValue.value) {
+                library[i].read = bookListReadValue.value;
+            }
+        }
+    })
+
+    
+
+    let removeButton = document.createElement('button');
+    removeButton.classList.add('removeButton');
+    removeButton.type = 'button';
+    removeButton.innerHTML = 'X'
+    book.appendChild(removeButton);
+
+    removeButton.addEventListener('click', a => a.target.parentNode.remove())
+
 
 
     bookGrid.appendChild(book);
