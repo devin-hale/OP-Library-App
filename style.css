@@ -18,8 +18,8 @@ body {
 
 .header {
     background-color: rgb(46, 94, 60);
-    max-height: 80px;
     font-size: calc(40px + 2vw);
+    max-height: 75px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,9 +30,21 @@ body {
 
 .header > p {
     padding: 10px;
+    text-overflow: clip;
 }
 
 .header > i {
-    padding: 10px
+    transition: 0.05s;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.header > i:hover {
+    transition: 0.05s;
+    font-size: larger;
+}
+
+#bookGrid {
+    color: black;
 }
 
