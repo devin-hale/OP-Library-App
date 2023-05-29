@@ -47,32 +47,65 @@ const myPage = (() => {
         bLogo.classList = "fa-solid fa-book bLogo";
         bLogo.style = "color: #2e5e3c;"
         bookDiv.appendChild(bLogo)
+        bLogo.addEventListener('click', a => {
+            
+            console.log(Array.from(document.querySelectorAll('.bookDiv')).indexOf(a.target.parentNode));
+        })
+
+        let textDiv = document.createElement('div');
+        textDiv.classList = 'textContainer';
+        bookDiv.appendChild(textDiv);
 
         // Author
         let bAuth = document.createElement('p');
         bAuth.classList = "bAuth"
         bAuth.innerHTML = author
-        bookDiv.appendChild(bAuth);
+        textDiv.appendChild(bAuth);
 
         //Pages
         let bPages = document.createElement('p');
         bPages.classList = 'bPages';
         bPages.innerHTML = `${pages} Pages`;
-        bookDiv.appendChild(bPages);
+        textDiv.appendChild(bPages);
 
         //Read?
         let bRead = document.createElement('p');
         bRead.classList = 'bRead';
         bRead.innerHTML = read;
-        bookDiv.appendChild(bRead)
+        textDiv.appendChild(bRead)
+
+        //Edit Button
+        let bEdit = document.createElement('i');
+        bEdit.classList = 'fa-solid fa-pencil bEdit';
+        bookDiv.appendChild(bEdit);
+
+
+        //Delete Button
+        let bDel = document.createElement('i');
+        bDel.classList = 'fa-solid fa-x bDel';
+        bookDiv.appendChild(bDel);
 
         gridDiv.appendChild(bookDiv);
         
     }
 
+    const renderPlus = () => {
+
+        let gridDiv = document.getElementById('bookGrid');
+
+        let bookDiv = document.createElement('div');
+        bookDiv.classList = 'add-bookDiv';
+
+        let bAdd = document.createElement('i');
+        bAdd.classList = 'fa-solid fa-plus bAdd';
+        bookDiv.appendChild(bAdd);
+
+        gridDiv.appendChild(bookDiv);
+    }
+
     
 
-    return {renderPage, renderBook};
+    return {renderPage, renderBook, renderPlus};
 })();
 
 class Book {
@@ -82,10 +115,14 @@ class Book {
         this.pages = pages;
         this.read = read;
     }
+
+    
 }
 
 
 
 myPage.renderPage();
-myPage.renderBook('Book 1', 'Bobby Hill', 492, 'Read');
+myPage.renderBook('Harry Potter and the Pee Pee Poo Poo', 'Bobby Hill', 492, 'Read');
+myPage.renderBook('Bobby', 'Bobby Hill', 492, 'Read');
+myPage.renderPlus();
 console.log('Hey');
