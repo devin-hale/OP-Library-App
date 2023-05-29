@@ -5,6 +5,11 @@ html {
     color: white;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -13,7 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-
+    background-color: rgb(2, 17, 4);
 }
 
 .header {
@@ -45,6 +50,105 @@ body {
 }
 
 #bookGrid {
-    color: black;
+    padding: 10px;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 350px);
+    grid-auto-rows: 1fr;
+    justify-content: center;
+    gap: 10px;
+}
+
+.bookDiv {
+    display: grid;
+    grid-template: 65px 2fr 1fr / 1fr 1fr;
+    border: 5px solid rgb(46, 94, 60);
+    background-color: rgb(90, 160, 111);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.textContainer {
+    padding: 20px;
+    grid-column: span 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 22.5px;
+}
+
+.bDel, .bEdit {
+    transition: .1s;
+    grid-column: span 1;
+    padding: 5px;
+    font-size: 25px;
+    margin: 5px;
+    border: 5px solid rgb(46, 94, 60);
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.bEdit:hover {
+    transition: .1s;
+    cursor: pointer;
+    background-color: rgb(127, 221, 155);
+}
+
+.bDel:hover {
+    transition: .1s;
+    cursor: pointer;
+    background-color: rgb(206, 146, 146);
+}
+
+.bAdd {
+    transition: .1s;
+    font-size: 80px;
+    background-color: rgb(46, 94, 60);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+
+.bAdd:hover {
+    transition: .1s;
+    cursor: pointer;
+    background-color: rgb(90, 160, 111);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.add-bookDiv {
+    border: 5px solid rgb(46, 94, 60);
+    background-color: rgb(46, 94, 60);
+    border-radius: 10px;
+    margin: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.bookDiv > p {
+    font-size: 26px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    
+}
+
+.bLogo {
+    grid-column: span 1;
+    font-size: 80px;
+    text-align: center;
+    padding: 20px;
+}
+.titleDiv {
+    grid-column: span 2;
+    background-color: rgb(46, 94, 60);
+    color: white;
+    padding: 10px;
+    text-overflow: ellipsis;
+    font-size: calc(40px - 2vh);
+
 }
 
