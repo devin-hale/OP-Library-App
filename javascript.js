@@ -28,7 +28,7 @@ const myPage = (() => {
 
     //Renders Book Div to Grid
 
-    const renderBook = (title, author, pages, read) => {
+    const renderBook = (object) => {
         // Get DridDiv
         let gridDiv = document.getElementById('bookGrid');
 
@@ -39,7 +39,7 @@ const myPage = (() => {
         // Inner Title Div
         let titleDiv = document.createElement('h1');
         titleDiv.classList = 'titleDiv';
-        titleDiv.innerHTML = title;
+        titleDiv.innerHTML = object.title;
         bookDiv.appendChild(titleDiv);
 
         // Book Logo
@@ -59,19 +59,19 @@ const myPage = (() => {
         // Author
         let bAuth = document.createElement('p');
         bAuth.classList = "bAuth"
-        bAuth.innerHTML = author
+        bAuth.innerHTML = object.author
         textDiv.appendChild(bAuth);
 
         //Pages
         let bPages = document.createElement('p');
         bPages.classList = 'bPages';
-        bPages.innerHTML = `${pages} Pages`;
+        bPages.innerHTML = `${object.pages} Pages`;
         textDiv.appendChild(bPages);
 
         //Read?
         let bRead = document.createElement('p');
         bRead.classList = 'bRead';
-        bRead.innerHTML = read;
+        bRead.innerHTML = object.read;
         textDiv.appendChild(bRead)
 
         //Edit Button
@@ -103,9 +103,91 @@ const myPage = (() => {
         gridDiv.appendChild(bookDiv);
     }
 
+    const renderModal = () => {
+        let modalBKG = document.createElement('div');
+        modalBKG.id = 'modalBKG';
+        let modalWin = document.createElement('div');
+        modalWin.id = 'modalWin';
+        modalBKG.appendChild(modalWin);
+        document.body.appendChild(modalBKG);
+    }
+
+    const renderBookAdd = () => {
+        let modalWin = document.getElementById('modalWin');
+
+        let bookForm = document.createElement('form')
+
+        let bookField = document.createElement('fieldset');
+        bookForm.appendChild(bookField);
+
+        let titleInput = document.createElement('input');
+        titleInput.type = 'text';
+        titleInput.placeholder = 'Book Title';
+        titleInput.minLength = '1'
+        titleInput.maxLength = '20';
+        titleInput.name = 'title';
+        bookField.appendChild(titleInput);
+
+        let authorInput = document.createElement('input');
+        authorInput.type = 'text';
+        titleInput.minLength = '1'
+        authorInput.placeholder = 'Book Author';
+        authorInput.maxLength = '20';
+        authorInput.name = 'author';
+        bookField.appendChild(authorInput);
+
+        let pagesInput = document.createElement('input');
+        pagesInput.type = 'number';
+        pagesInput.placeholder = 'Pages';
+        pagesInput.min = '1';
+        pagesInput.name = 'pages';
+        bookField.appendChild(pagesInput);
+
+        let inputRRLable = document.createElement('label');
+        inputRRLable.for = 'Read';
+        inputRRLable.innerHTML = 'Read'
+        bookField.appendChild(inputRRLable);
+
+        let inputRadioR = document.createElement('input');
+        inputRadioR.type = 'Radio'
+        inputRadioR.name = 'Read'
+        inputRadioR.value = 'Read'
+        inputRadioR.id = 'Read'
+        bookField.appendChild(inputRadioR);
+
+        let inputRURLable = document.createElement('label');
+        inputRURLable.for = 'Not Read';
+        inputRURLable.innerHTML = 'Not Read'
+        bookField.appendChild(inputRURLable);
+
+        let inputRadioUR = document.createElement('input');
+        inputRadioUR.type = 'Radio'
+        inputRadioUR.name = 'Read'
+        inputRadioUR.required = true;
+        inputRadioUR.value = 'Not Read'
+        inputRadioUR.id = 'Not Read'
+        bookField.appendChild(inputRadioUR);
+
+        let addSave = document.createElement('button')
+        addSave.type = 'button'
+        addSave.id = 'Save'
+        addSave.innerHTML = 'Save'
+        bookField.appendChild(addSave);
+
+        let addCancel = document.createElement('button')
+        addCancel.type = 'button'
+        addCancel.id = 'Cancel'
+        addCancel.innerHTML = 'Cancel'
+        bookField.appendChild(addCancel);
+
+
+
+        modalWin.appendChild(bookForm);
+        
+    }
     
 
-    return {renderPage, renderBook, renderPlus};
+    return {renderPage, renderBook, renderPlus, renderModal, renderBookAdd};
 })();
 
 class Book {
@@ -122,7 +204,7 @@ class Book {
 
 
 myPage.renderPage();
-myPage.renderBook('Harry Potter and the Pee Pee Poo Poo', 'Bobby Hill', 492, 'Read');
-myPage.renderBook('Bobby', 'Bobby Hill', 492, 'Read');
 myPage.renderPlus();
+myPage.renderModal();
+myPage.renderBookAdd();
 console.log('Hey');
