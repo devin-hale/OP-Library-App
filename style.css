@@ -263,7 +263,7 @@ button {
     border-color: #77ff77;
 }
 
-#Save:hover {
+#Save:hover, #Confirm:hover {
     transition: .15s;
     background-color: #548f54;
 }
@@ -278,3 +278,19 @@ button {
     background-color: rgb(189, 95, 95);
 }
 
+#delDiv {
+    display: grid;
+    grid-template: 1fr 1fr/ 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+}
+
+#delDiv > p {
+    grid-column: span 2;
+    text-align: center;
+    font-size: 35px;
+}
+
+#Confirm {
+    transition: .15s;
+}
