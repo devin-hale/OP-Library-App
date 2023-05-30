@@ -397,7 +397,7 @@ class Book {
 
 let updateFlag = false;
 
-let Bobby =new Book({title:'Bobby', author:'Billy', pages:52, read:'Not Read'})
+let Bobby =new Book({title:'A Game of Thrones', author:'George R.R. Martin', pages:694, read:'Not Read'})
 Bobby.storeBook();
 
 myPage.renderPage();
